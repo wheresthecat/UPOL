@@ -11,7 +11,7 @@ int main()
     // Deklarace promennych
 
     int day, month, year; // Datum
-    int maxFeb;
+    int maxFeb; // Unor a prestupny rok
     int test = 0;
     int error = 0;
     int leap = 0;
@@ -22,13 +22,6 @@ int main()
     printf("Zadejte datum ve formatu (Den.Mesic.Rok): ");
     scanf("%d.%d.%d", &day, &month, &year);
 
-    // Testovaci vyystup.
-
-    /*
-    printf("\n%d", day);
-    printf("\n%d", month);
-    printf("\n%d", year);
-    */
 
     /* TODO: (Frosty) - Chybové hlášky wrong year/month/day jsou v podstatě navíc, možná je vhodné
     * je přesunout v kódu na konec k finálnímu výstupu. A nebo uplně odstranit.
@@ -41,28 +34,25 @@ int main()
     char *wrongYear = " Rok mimo rozsah. ";
     char *wrongMonth = " Mesic mimo rozsah. ";
     char *wrongDay = " Den mimo rozsah. ";
-    char *wrongDate = "Den neexistuje. ";
+    char *wrongDate = "Datum neexistuje. ";
     char *goodDate = "Den existuje.";
+    char *leapYear = "Prestupny rok.";
 
     // Rok - podmínky pro otestování počátku Gregoriánského kalendáře + horní mez.
+
     if(year < 1582 || year > 2017)
     {
         printf("%s", wrongYear);
         error += 1;
     }
+
     // Zjištění přestupného roku.
 
-
-
-    if(year % 4 == 0)
+    if(year % 4 == 0 && year % 100 != 0)
     {
         leap = 1;
     }
 
-    if(year % 100 == 0)
-    {
-        leap = 0;
-    }
     if(year % 400 == 0)
     {
         leap = 1;
@@ -87,6 +77,17 @@ int main()
             error +=1;
         }
     }
+
+    // Měsíce s 30 dny.
+    if(month == 4 || 6 || 9 || 11)
+    {
+        if(day>30 || day<1)
+        {
+            printf("%s", wrongDay);
+            error +=1;
+        }
+    }
+
     // Únor a přestupný rok.
     if(month == 2)
     {
@@ -103,19 +104,7 @@ int main()
             printf("%s", wrongDay);
             error +=1;
         }
-
-
     }
-    // Měsíce s 30 dny.
-    if(month == 4 || 6 || 9 || 11)
-    {
-        if(day>30 || day<1)
-        {
-            printf("%s", wrongDay);
-            error +=1;
-        }
-    }
-
 
 
     // Konečný výstup. Good or Wrong.
