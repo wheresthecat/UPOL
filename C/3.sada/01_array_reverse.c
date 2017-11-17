@@ -1,6 +1,6 @@
 /*
 Cviceni 01. - Obraceni pole.
-Program vypise do konzole hodnoty obaszene v poli a pote je vypise v opacnem poradi.
+Program vypise do konzole hodnoty obsazene v poli a pote je vypise v opacnem poradi.
 
 */
 
