@@ -10,7 +10,6 @@
 
 int main()
 {
-    // TODO: Tohle řešení je takové divné, asi by to chtělo předělat.
     // Deklarace proměnných
 
     int salary;
