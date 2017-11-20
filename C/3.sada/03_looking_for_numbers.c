@@ -1,6 +1,6 @@
 /***
 Cviceni 03: Hledani cisel v poli.
-Program necha uzivatele naplnit pole cisli, nebo to provede pomoci nahodnych cisel.
+Program necha uzivatele naplnit pole cisly, nebo to provede pomoci nahodnych cisel.
 Program vyhleda v poli zadane cislo a vypise jeho index, nebo oznami, ze nebylo
 nalezeno.
 */
@@ -17,17 +17,17 @@ int main()
     // Deklarace promennych
     int size = 0; // Velikost pole.
     int number = 0; // Hledane cislo.
-    int repeat = 1; // Promenna pro cyklus v pripade chybneho vstupu.
-    int secondRepeat = 1;
+
     int autoFill = 0; // "bool" pro manualni / automaticke plneni.
     int randmax = 0; // Promena pro strop pro funkci rand().
+    int countOfFound = 0; //Pocita nalezena cisla.
 
     char choice; // Pro switch vyberu zpusobu zadani cisel.
-    char secondChoice;
-    int secondMenuRepeat = 1;
-    float meanValue; // Konecny vysledek, prumer hodnot v poli.
+    char secondChoice; // Pro switch druheho menu: Dalsi hledani nebo ukonceni programu.
 
-
+    int repeat = 1; // Promenna pro cyklus v pripade chybneho vstupu u swtiche pro vyber zpusobu zadani cisel.
+    int secondRepeat = 1; // Promena pro cyklus pro opakovani hledani cisla.
+    int secondMenuRepeat = 1; // Promenna pro cyklus osetreni vstupu A / N.
 
 
 
@@ -39,7 +39,6 @@ int main()
 
     while(repeat == 1)
     {
-
         scanf(" %c", &choice);
         getchar();
         // Switch pro zvoleni metody naplneni pole cisli.
@@ -50,21 +49,19 @@ int main()
                 printf("Automaticky.\n");
                 autoFill = 1;
                 repeat = 0;
-
             break;
 
             case 'M':
             case 'm':
                 printf("Manualne.\n");
                 repeat = 0;
-
             break;
 
 
             default:
                 printf("Chyba zadani. Zvolte prosim A nebo M:\n");
                 repeat = 1;
-                break;
+            break;
 
         }
     }
@@ -78,6 +75,7 @@ int main()
 
     if(autoFill == 1) // Automaticke naplneni pole.
     {
+        // Strop pro maximalni velikost pseudonahodneho cisla.
         printf("Zadejte maximalni velikost nahodneho cisla: \n");
         scanf(" %i", &randmax);
 
@@ -105,12 +103,10 @@ int main()
 
     // Vyhledavani cisla v poli.
     printf("\n======================================\n");
-    int test = 1;
-    while(secondRepeat != 0)
+    while(secondRepeat == 1)
     {
-        printf("secondRepeat: %i\n", secondRepeat);
-        printf("secondMenuRepeat: %i\n", secondMenuRepeat);
-        printf("");
+        countOfFound = 0; // Reset pocitadla nalezenych cisel.
+
         printf("Zadejte hledane cislo: ");
         scanf(" %i", &number);
 
@@ -119,25 +115,34 @@ int main()
             if(numbers[i] == number)
             {
                 printf("Hledane cislo ma index %i\n", i);
+                countOfFound++;
             }
+
+        }
+        // Odezva podle poctu nalezenych cisel.
+        if(countOfFound == 0)
+        {
+            printf("Cislo nenalezeno.\n");
+        }
+        else
+        {
+            printf("Zadne dalsi cislo nenalezeno.\n");
         }
 
-        printf("Cislo nenalezeno.\n");
-        printf("Znovu? A / N\n");
+        printf("\nChcete hledat dalsi cislo? A / N\n");
 
-        char test;
-        scanf(" %c", &test);
-        //test = (char) getchar();
+        secondMenuRepeat = 1; // Reset promenne pro druhe menu.
 
+        // Menu pro zadani Ano / Ne pro opakovani hledaneho cisla, nebo ukonceni programu.
         while(secondMenuRepeat == 1)
         {
-            switch(test)
+            scanf(" %c", &secondChoice);
+            switch(secondChoice)
             {
                 case 'N':
                 case 'n':
                     secondRepeat = 0;
                     secondMenuRepeat = 0;
-                    return 0;
                     break;
 
                 case 'A':
@@ -147,15 +152,12 @@ int main()
                     break;
 
                 default:
-                    printf("Napiste prosim A/N\n");
+                    printf("Napiste prosim A/N:\n");
                     secondMenuRepeat = 1;
                 break;
             }
         }
     }
-
-
-
 
 
     return 0;
