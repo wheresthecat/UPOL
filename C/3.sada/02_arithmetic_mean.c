@@ -109,6 +109,7 @@ int main()
     printf("\n======================================\n");
     // Vypis prvku pole:
     printf("Pole obsahuje nasledujici prvky: ");
+
     for(int j = 0; j < size; j++)
     {
         // Podminka kontroluje, zda se jedna/nejedna o posledni prvek pole a podle toho vypise "," nebo ".".
