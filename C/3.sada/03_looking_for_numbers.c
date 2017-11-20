@@ -103,29 +103,14 @@ int main()
     }
 
 
-    printf("\n======================================\n");
-    // Vypis prvku pole:
-
-//    printf("Pole obsahuje nasledujici prvky: ");
-//    for(int j = 0; j < size; j++)
-//    {
-//        // Podminka kontroluje, zda se jedna/nejedna o posledni prvek pole a podle toho vypise "," nebo ".".
-//        // Jde ciste o kosmeticky detail.
-//        if(j!=size-1)
-//        {
-//            printf("%i, ", numbers[j]);
-//        }
-//        else
-//        {
-//            printf("%i. ", numbers[j]);
-//        }
-//    }
-
     // Vyhledavani cisla v poli.
     printf("\n======================================\n");
     int test = 1;
-    while(secondRepeat == 1)
+    while(secondRepeat != 0)
     {
+        printf("secondRepeat: %i\n", secondRepeat);
+        printf("secondMenuRepeat: %i\n", secondMenuRepeat);
+        printf("");
         printf("Zadejte hledane cislo: ");
         scanf(" %i", &number);
 
@@ -142,25 +127,24 @@ int main()
 
         char test;
         scanf(" %c", &test);
-        getchar();
+        //test = (char) getchar();
 
         while(secondMenuRepeat == 1)
         {
-            switch(secondChoice)
+            switch(test)
             {
+                case 'N':
+                case 'n':
+                    secondRepeat = 0;
+                    secondMenuRepeat = 0;
+                    return 0;
+                    break;
+
                 case 'A':
                 case 'a':
                     secondRepeat = 1;
-                    test = 1;
                     secondMenuRepeat = 0;
-                break;
-
-                case 'N':
-                case 'n':
-                    secondRepeat = -1;
-                    test = 0;
-                    secondMenuRepeat = 0;
-                break;
+                    break;
 
                 default:
                     printf("Napiste prosim A/N\n");
