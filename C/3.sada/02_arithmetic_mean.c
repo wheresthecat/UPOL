@@ -1,5 +1,5 @@
 /**
-Cviceni 03: Aritmeticky prumer pole.
+Cviceni 02: Aritmeticky prumer pole.
 Program vypocita aritmeticky prumer pole z prvku zadanych uzivatelem.
 */
 
