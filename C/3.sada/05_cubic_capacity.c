@@ -3,20 +3,11 @@
 
 #define PI 3.14159265359
 
-
-
-
-/**
-Funkce pro vypocty jsou hotove.
-TODO:
- - Volba typu telesa
- - posetreni vstupu
-
-*/
+// Deklarace funkci.
 float block_area(int width, int length, int height);
 float block_volume(int width, int length, int height);
-float cylinder_volume(float diameter, float height);
 float cylinder_area(float diameter, float height);
+float cylinder_volume(float diameter, float height);
 
 
 int main()
@@ -44,14 +35,28 @@ int main()
     printf("Zadejte druhy rozmer: \n");
     scanf(" %i", &secondVal);
 
-    printf("Zadejte treti rozmer: \n");
-    scanf(" %i", &thirdVal);
+    if(choice == 2) // Treti rozmer je u valce zbytecny.
+    {
+        printf("Zadejte treti rozmer: \n");
+        scanf(" %i", &thirdVal);
+    }
 
-    volume = cylinder_volume(firstVal, secondVal);   //block_volume(firstVal, secondVal, thirdVal);
-    area =   cylinder_area(firstVal, secondVal);   //block_area(firstVal, secondVal, thirdVal);
 
+
+    // Vystup hodnot.
+    if(choice == 1) // Valec
+    {
+        volume = cylinder_volume(firstVal, secondVal);
+        area =   cylinder_area(firstVal, secondVal);
+    }
+    else if(choice == 2) // Kvadr
+    {
+        volume = block_volume(firstVal, secondVal, thirdVal);
+        area =   block_area(firstVal, secondVal, thirdVal);
+    }
+
+    // Vypis vyslednych hodnot.
     printf("\nObjem telesa je: %.2f", volume);
-
     printf("\nPovrch telesa je: %.2f", area);
 
 
