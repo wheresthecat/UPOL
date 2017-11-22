@@ -1,3 +1,7 @@
+/**
+Cviceni 05: Vypocet objemu a povrchu teles.
+Program vypocita povrch a objem zvoleneho telesa.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 

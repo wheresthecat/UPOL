@@ -12,7 +12,6 @@ int main()
 
     int day, month, year; // Datum
     int maxFeb; // Unor a prestupny rok
-    int test = 0;
     int error = 0;
     int leap = 0;
     int months; // pro switch
@@ -23,9 +22,7 @@ int main()
     scanf("%d.%d.%d", &day, &month, &year);
 
 
-    /* TODO: (Frosty) - Chybové hlášky wrong year/month/day jsou v podstatě navíc, možná je vhodné
-    * je přesunout v kódu na konec k finálnímu výstupu. A nebo uplně odstranit.
-    */
+
 
     // Zjisteni, zda je datum skutečný.
 
