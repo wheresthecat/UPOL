@@ -30,8 +30,9 @@ int main(int argc, char const *argv[])
 
 	#ifdef DEBUG
 
+	printf("Debug line:\n");
 	printf("Zlomek a: %d/%d.\n", a.citatel, a.jmenovatel);
-	printf("Zlomek a: %d/%d.\n", b.citatel, b.jmenovatel);
+	printf("Zlomek b: %d/%d.\n", b.citatel, b.jmenovatel);
 
 	#endif
 
